@@ -1,0 +1,8 @@
+{{set . "title" "Hello page"}}
+{{template "header.html" .}}
+
+<h1> Hello! {{.username}} </h1>
+
+<a href="/">Back to main page</a>
+
+{{template "footer.html" .}}

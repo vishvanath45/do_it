@@ -1,0 +1,66 @@
+{{set . "title" "Home"}}
+{{template "header.html" .}}
+
+  
+  <h1 class="display-4">DO IT!</h1>
+  <p class="lead">Keep Yourself Productive and Accountable! 🎯</p>
+  <hr class="my-4">
+  <p class="lead">It uses Eisenhower Matrix to create task list.</p>
+  <p class="lead">
+  <!-- <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a> -->
+  </p>
+  <br>
+  <br>
+  <br>
+
+<div class="container">
+
+<div class="row">
+
+	<div class="col" style="max-width: 300px;">
+
+	{{template "flash.html" .}}
+	<form action="/login" method="POST">
+	<div class="form-group">
+		<label >Username</label>
+		<input type="text" class="form-control" name="username"/>
+	</div>
+	<div class="form-group">
+		<label >Password</label>
+		<input type="password" class="form-control" name="password"/>
+	</div>
+		<button type="submit" class="btn btn-secondary">Login</button>
+	</form>
+
+	</div>
+
+    <div class="col-2" style="max-width: 30px;">
+     	<!-- Just a empty space in between -->
+    </div>
+
+	<div class="col" style="max-width: 300px;">
+
+	{{template "flash.html" .}}
+	<form action="/signup" method="POST">
+	<div class="form-group">
+	  	<label >Choose a Username</label>
+	  	<input type="text" class="form-control" name="username" placeholder="Choose unique username" />
+	</div>
+	<div class="form-group">
+	  	<label >Password</label>
+	  	<input type="password" class="form-control" name="password" placeholder="Stored with SHA256 Hash"/>
+	</div>
+		<button type="submit" class="btn btn-secondary">Signup</button>
+	</form>
+
+	</div>
+
+
+
+{{template "footer.html" .}}
+
+
+
+
+
+

@@ -1,0 +1,149 @@
+{{set . "title" "Do It"}}
+{{template "header.html" .}}
+
+<style>
+table {
+  /*border-collapse:separate;*/
+  /*border-spacing:10px 10px;*/
+}​​​​​​​​​​​​​
+th {
+	border;
+	border-dark;
+}
+tbody {
+	border;
+	border-dark;
+}
+</style>
+
+<h3>Keep in mind 🧠</h3>
+<small>
+	<ul>
+	<li>Add task in specific Priority.</li>
+	<li>Stay Dedicated and make sure you complete the task.</li>
+	<li>Click on the task to toggle status (✔️/ ❌).</li>
+	<li>Click on 🗑️ to remove the task. (Do not delete completed task).</li>
+	</ul>
+</small>
+<br>
+<table class="table table-sm border border-dark" style="text-align: center; max-width:900px; width: 90%;" align="center">
+  
+
+	<colgroup>
+		<col span="1" style="width: 10%;">
+		<col span="1" style="width: 45%;">
+		<col span="1" style="width: 45%;">
+	</colgroup>
+
+  <thead>
+	<tr>
+	  <th scope="col" class="border border-dark"></th>
+	  <th scope="col" class="lead border border-dark">IMPORTANT</th>
+	  <th scope="col" class="lead border border-dark">NOT IMPORTANT</th>
+	</tr>
+  </thead>
+
+
+  <tbody>
+	<tr>
+	  <th scope="row" class="lead border border-dark">URGENT</th>
+	  <td class="border border-dark">
+	  	<div class="lead">DO</div>
+		<br>
+		{{ range .I_U }}
+
+			{{if .Status}}
+			<i class="fa fa-check" aria-hidden="true"></i>
+			{{ else }}
+			<i class="fa fa-times" aria-hidden="true"></i>
+			{{ end }}
+			<a href="toggle/{{.Id}}">{{.Title}}</a>
+			<a href="delete/{{.Id}}"><small>🗑️</small></a>
+			<br>
+
+		{{ end }}
+
+		<br>
+		<form action="/add" method="GET">
+        <input type="text" placeholder="Add Targets!" style="background-color: transparent; width: 90%;" class="form-control form-control-sm" name="title"/> <br>
+          <input type="hidden" name="priority" value="1">
+      	</form>
+
+	  </td>
+	  <td class="border border-dark">
+	  	<div class="lead">DELEGATE</div>
+		<br>
+		{{ range .I_NU }}
+
+			{{if .Status}}
+			<i class="fa fa-check" aria-hidden="true"></i>
+			{{ else }}
+			<i class="fa fa-times" aria-hidden="true"></i>
+			{{ end }}
+			<a href="toggle/{{.Id}}">{{.Title}}</a>
+			<a href="delete/{{.Id}}"><small>🗑️</small></a>
+			<br>
+
+		{{ end }}
+
+		<br>
+		<form action="/add" method="GET">
+
+        <input type="text" placeholder="Add Targets!" style="background-color: transparent; width: 90%;" class="form-control form-control-sm" name="title"/> <br>
+          <input type="hidden" name="priority" value="2">
+      	</form>
+		</td>
+	</tr>
+	<tr>
+	  <th scope="row" class="lead">NOT URGENT</th>
+	  <td class="border border-dark">
+	  	<div class="lead">DECIDE</div>
+		<br>
+		{{ range .NI_U }}
+
+			{{if .Status}}
+			<i class="fa fa-check" aria-hidden="true"></i>
+			{{ else }}
+			<i class="fa fa-times" aria-hidden="true"></i>
+			{{ end }}
+			<a href="toggle/{{.Id}}">{{.Title}}</a>
+			<a href="delete/{{.Id}}"><small>🗑️</small></a>
+			<br>
+			
+		{{ end }}
+
+		<br>
+		<form action="/add" method="GET">
+        <input type="text" placeholder="Add Targets!" style="background-color: transparent; width: 90%;" class="form-control form-control-sm" name="title"/> <br>
+          <input type="hidden" name="priority" value="3">
+      	</form>
+
+	  </td>
+	  <td class="border border-dark"> 
+	  	<div class="lead">DELETE</div>
+		<br>
+		{{ range .NI_NU }}
+
+			{{if .Status}}
+			<i class="fa fa-check" aria-hidden="true"></i>
+			{{ else }}
+			<i class="fa fa-times" aria-hidden="true"></i>
+			{{ end }}
+			<a href="toggle/{{.Id}}">{{.Title}}</a>
+			<a href="delete/{{.Id}}"><small>🗑️</small></a>
+			<br>
+			
+		{{ end }}
+
+		<br>
+		<form action="/add" style="margin:auto;" method="GET">
+        <input type="text" style="background-color: transparent;" placeholder="Add Targets!" class="form-control form-control-sm"  name="title"/> <br>
+          <input type="hidden" name="priority" value="4">
+      	</form>
+
+	  </td>
+	</tr>
+  </tbody>
+</table>
+
+{{template "footer.html" .}}
